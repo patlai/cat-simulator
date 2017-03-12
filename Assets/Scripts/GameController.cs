@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour {
 	private int minutes;
 	private int seconds;
 	public float time;
-
+	public float introTime = 3f;
 
 	//SCORE
 	public int score;
@@ -23,12 +23,14 @@ public class GameController : MonoBehaviour {
 	public Text inGameTimeText;
 	public Text scoreText;
 	public Text alertText;
+	public Text dialogText;
 	private float alertSpeed = 1f;
 	private float nextAlert = 0;
 	public Color white = new Color(1f,1f,1f,1f);
 
 	//STATUS ICONS
 	public Image humanStatusImage;
+	public Image dialogImage;
 	public Sprite humanGreen;
 	public Sprite humanYellow;
 	public Sprite humanRed;
@@ -37,13 +39,17 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization	
 	void Start () {
-		
+		//PlayIntro ();
 	}
 
 	// Update is called once per frame
 	void Update () {
 		updateTime ((Time.time) * timeRate + timeOffset);
 		inGameTimeText.text = "Time: " + string.Format ("{0:00}:",hours) + string.Format("{0:00}:", minutes) + string.Format("{0:00}", seconds);
+
+
+		
+
 		scoreText.text = "Happiness: " + score;
 		if (score > highScoreThreshold)
 			humanStatusImage.sprite = humanRed;
@@ -86,5 +92,31 @@ public class GameController : MonoBehaviour {
 
 	void EndGame(){
 		hasGameEnded = true;
+		dialogImage.color = new Color (0f, 0f, 0f, 1f);
+		PlayOutro ();
+	}
+
+	public void PlayIntro(){
+		if (Time.time < 3)
+			dialogText.text = "Bye kitty! Be nice, I’ll see you later.";
+		
+			
+	}
+
+	public void PlayOutro(){
+		if (score > highScoreThreshold) {
+			dialogText.text = "...";
+			var x =(MovieTexture)dialogImage.GetComponent<GUITexture> ().texture;
+			x.Play ();
+		}
+			
+		else if (score > mediumScoreThreshold)
+			dialogText.text = "Oh my god. What happened here, did I get robbed? This is getting way too out of hand. You’re staying out tonight.";
+		else
+			dialogText.text = "Kitty!! What have you done! This is not nice… You little messy fur ball";
+	}
+
+	public bool BeginGame(){
+		return Time.time > introTime;
 	}
 }

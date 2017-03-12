@@ -93,7 +93,7 @@ public class characterController : MonoBehaviour {
 		float initStrafe = strafe;
 		translation *= Time.deltaTime;
 		strafe *= Time.deltaTime;
-		if (canMove) {
+		if (canMove && gameController.BeginGame() ) {
 			
 
 			transform.Translate (strafe, 0, translation);
