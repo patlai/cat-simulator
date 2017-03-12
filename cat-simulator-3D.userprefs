@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/characterController.cs">
+    <Files>
+      <File FileName="Assets/Scripts/LightController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/GameController.cs" Line="31" Column="37" />
+      <File FileName="Assets/Scripts/characterController.cs" Line="96" Column="1" />
+      <File FileName="Assets/Scripts/catHealth.cs" Line="6" Column="1" />
+      <File FileName="Assets/Scripts/camRotation.cs" Line="30" Column="3" />
+      <File FileName="Assets/Scripts/foodController.cs" Line="17" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

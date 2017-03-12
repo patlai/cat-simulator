@@ -1,0 +1,102 @@
+fileFormatVersion: 2
+guid: 9150de5134a769b419c0f637d9e54977
+timeCreated: 1489275006
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: GA_stones_plantpot_cactus_gasteria_cactus
+    100004: plantpot_cactus_gasteria_cactus_GA_cactus
+    100006: plantpot_cactus_gasteria_cactus_GA_clay_pot
+    100008: plantpot_cactus_gasteria_cactus_GA_ground_pot
+    100010: plantpot_cactus_gasteria_cactus_GA_vase
+    400000: //RootNode
+    400002: GA_stones_plantpot_cactus_gasteria_cactus
+    400004: plantpot_cactus_gasteria_cactus_GA_cactus
+    400006: plantpot_cactus_gasteria_cactus_GA_clay_pot
+    400008: plantpot_cactus_gasteria_cactus_GA_ground_pot
+    400010: plantpot_cactus_gasteria_cactus_GA_vase
+    2300000: GA_stones_plantpot_cactus_gasteria_cactus
+    2300002: plantpot_cactus_gasteria_cactus_GA_cactus
+    2300004: plantpot_cactus_gasteria_cactus_GA_clay_pot
+    2300006: plantpot_cactus_gasteria_cactus_GA_ground_pot
+    2300008: plantpot_cactus_gasteria_cactus_GA_vase
+    3300000: GA_stones_plantpot_cactus_gasteria_cactus
+    3300002: plantpot_cactus_gasteria_cactus_GA_cactus
+    3300004: plantpot_cactus_gasteria_cactus_GA_clay_pot
+    3300006: plantpot_cactus_gasteria_cactus_GA_ground_pot
+    3300008: plantpot_cactus_gasteria_cactus_GA_vase
+    4300000: GA_stones_plantpot_cactus_gasteria_cactus
+    4300002: plantpot_cactus_gasteria_cactus_GA_cactus
+    4300004: plantpot_cactus_gasteria_cactus_GA_clay_pot
+    4300006: plantpot_cactus_gasteria_cactus_GA_ground_pot
+    4300008: plantpot_cactus_gasteria_cactus_GA_vase
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
