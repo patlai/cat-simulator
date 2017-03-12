@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\catHealth.cs" />
      <Compile Include="Assets\Scripts\characterController.cs" />
      <Compile Include="Assets\Scripts\foodController.cs" />
+     <Compile Include="Assets\Scripts\goalObject.cs" />
      <None Include="Assets\kitchen props\Readme.txt" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />

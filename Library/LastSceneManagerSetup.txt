@@ -2,3 +2,6 @@ sceneSetups:
 - path: Assets/_scenes/Main.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/Prefabs/test_scene.unity
+  isLoaded: 1
+  isActive: 0

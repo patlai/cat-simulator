@@ -29,7 +29,6 @@ public class camRotation : MonoBehaviour {
 
 
 
-
 		GetComponent<Transform>().localRotation = Quaternion.AngleAxis (-mouseLook.y, Vector3.right);
 		character.transform.localRotation = Quaternion.AngleAxis (mouseLook.x, character.transform.up);
 	}

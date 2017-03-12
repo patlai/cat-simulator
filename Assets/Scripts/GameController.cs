@@ -13,14 +13,27 @@ public class GameController : MonoBehaviour {
 	private int seconds;
 	public float time;
 
-	public int score;
 
+	//SCORE
+	public int score;
+	private int mediumScoreThreshold = 500;
+	private int highScoreThreshold = 1000;
+
+	//TEXT
 	public Text inGameTimeText;
 	public Text scoreText;
 	public Text alertText;
 	private float alertSpeed = 1f;
 	private float nextAlert = 0;
 	public Color white = new Color(1f,1f,1f,1f);
+
+	//STATUS ICONS
+	public Image humanStatusImage;
+	public Sprite humanGreen;
+	public Sprite humanYellow;
+	public Sprite humanRed;
+
+	public bool hasGameEnded = false;
 
 	// Use this for initialization	
 	void Start () {
@@ -31,7 +44,16 @@ public class GameController : MonoBehaviour {
 	void Update () {
 		updateTime ((Time.time) * timeRate + timeOffset);
 		inGameTimeText.text = "Time: " + string.Format ("{0:00}:",hours) + string.Format("{0:00}:", minutes) + string.Format("{0:00}", seconds);
-		scoreText.text = "Score: " + score;
+		scoreText.text = "Happiness: " + score;
+		if (score > highScoreThreshold)
+			humanStatusImage.sprite = humanRed;
+		else if (score > mediumScoreThreshold)
+			humanStatusImage.sprite = humanYellow;
+		else
+			humanStatusImage.sprite = humanGreen;
+		if (hours >= 18) {
+			EndGame ();
+		}
 		FlashAlertText ();
 	}
 
@@ -60,5 +82,9 @@ public class GameController : MonoBehaviour {
 			alertText.color,
 			Color.clear,
 			alertSpeed * Time.deltaTime);
+	}
+
+	void EndGame(){
+		hasGameEnded = true;
 	}
 }

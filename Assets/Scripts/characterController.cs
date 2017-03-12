@@ -4,6 +4,50 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class characterController : MonoBehaviour {
+	
+
+	public Text ToolTipText;
+
+	public Text PoopCountText;
+
+	private Animator anim;
+
+	//POOP
+	private int startingPoopCount = 5;
+	private int poopCount = 5;
+	public GameObject poopObject;
+	public Transform poopSpawn;
+
+	//MOVEMENT
+	public float speed;
+	public float jumpHeight;
+	private float jumpRate = 0.5f;
+	private float nextJump = 0.0f;
+	private float recoilFactor = -3;
+	private bool canMove = true;
+
+	public catHealth health;
+
+	//SOUNDS
+	public AudioSource meowSound;
+	public AudioSource purrSound;
+	public AudioSource poopSound;
+	public AudioSource scratchSound;
+
+	private float meowRate = 0.5f;
+	private float nextMeow;
+
+	public GameController gameController;
+
+	public float sleepHours;
+
+	public Image sleepImage;
+	public Color flashColor = new Color(0f,0f,0f);
+	private float sleepRate = 0.5f;
+	private bool isAsleep = false;
+
+	private bool canEat = false;
+
 
 	private string[] goodMessages = new string[] {
 		"mmm...I like",
@@ -29,60 +73,32 @@ public class characterController : MonoBehaviour {
 
 	};
 
-	public Text ToolTipText;
-
-	public Text PoopCountText;
-
-	//POOP
-	private int startingPoopCount = 5;
-	private int poopCount = 5;
-	public GameObject poopObject;
-	public Transform poopSpawn;
-
-	//MOVEMENT
-	public float speed;
-	public float jumpHeight;
-	private float jumpRate = 0.5f;
-	private float nextJump = 0.0f;
-
-	public catHealth health;
-
-	//SOUNDS
-	public AudioSource meowSound;
-	public AudioSource purrSound;
-	public AudioSource poopSound;
-
-	private float meowRate = 0.5f;
-	private float nextMeow;
-
-	public GameController gameController;
-
-	public float sleepHours;
-
-	public Image sleepImage;
-	public Color flashColor = new Color(0f,0f,0f);
-	private float sleepRate = 0.5f;
-	private bool isAsleep = false;
-
-	private bool canEat = false;
-
-
 
 	// Use this for initialization
 	void Start () {
+		anim = GetComponent<Animator>();
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	// Update is called once per frame
 	void Update () {
+		
+
+		if (gameController.hasGameEnded) {
+			canMove = false;
+		}	
 		float translation = Input.GetAxis ("Vertical") * speed;
 		float strafe = Input.GetAxis ("Horizontal") * speed;
+		float initTrans = translation;
+		float initStrafe = strafe;
 		translation *= Time.deltaTime;
 		strafe *= Time.deltaTime;
+		if (canMove) {
+			
 
-		transform.Translate (strafe, 0, translation);
-
-
+			transform.Translate (strafe, 0, translation);
+		}
+			
 
 		if (isAsleep) {
 			sleepImage.color = flashColor;
@@ -103,12 +119,35 @@ public class characterController : MonoBehaviour {
 
 		if(Input.GetKeyDown("escape"))
 			Cursor.lockState = CursorLockMode.None;
+//
+//		if (Input.GetKeyDown ("space") && Time.time > nextJump) {
+//			Jump ();
+//			nextJump = Time.time + jumpRate;
+//		}
 
-		if (Input.GetKeyDown ("space") && Time.time > nextJump) {
-			Jump ();
+		if (initTrans != translation || initStrafe != strafe)
+		{
+			anim.SetBool("jump", false);
+			anim.SetBool("walk", true);
+		}
+		else
+			anim.SetBool("walk", false);
+
+		if (Input.GetKeyDown("escape"))
+			Cursor.lockState = CursorLockMode.None;
+
+		if (Input.GetKeyDown("space")&& Time.time > nextJump)
+		{
+			anim.SetBool("walk", false);
+			anim.SetBool("jump", true);
+			Jump ();	
 			nextJump = Time.time + jumpRate;
 		}
-
+		if(GetComponent<Rigidbody>().velocity.y < 1.5)
+		{
+			//Debug.Log(GetComponent<Rigidbody>().velocity.y);
+			anim.SetBool("jump", false);
+		}
 
 		if (Input.GetKeyDown ("f"))
 			Meow ();
@@ -140,6 +179,7 @@ public class characterController : MonoBehaviour {
 				health.TakeDamage (5);
 				int randomBad = Random.Range (0, badMessages.Length);
 				gameController.Alert (badMessages [randomBad]);
+				Recoil ();
 			} else {
 				int randomNeutral = Random.Range (0, neutralMessages.Length);
 				gameController.Alert (neutralMessages [randomNeutral]);
@@ -187,6 +227,13 @@ public class characterController : MonoBehaviour {
 			GetComponent<Rigidbody>().velocity.z);
 	}
 
+	void Recoil(){
+		GetComponent<Rigidbody>().velocity = new Vector3(
+			recoilFactor + GetComponent<Rigidbody>().velocity.x,
+			GetComponent<Rigidbody>().velocity.y,
+			recoilFactor + GetComponent<Rigidbody>().velocity.z);
+		Debug.Log (GetComponent<Rigidbody> ().velocity);
+	}
 
 
 	void FallAsleep(){
@@ -208,6 +255,8 @@ public class characterController : MonoBehaviour {
 	public void Poop(){
 		if (poopCount > 0) {
 			poopCount--;
+			Instantiate(poopObject, GetComponent<Rigidbody>().position, GetComponent<Rigidbody>().rotation);
+			gameController.score += 50;
 			poopSound.Play();
 		}
 	}
@@ -215,6 +264,14 @@ public class characterController : MonoBehaviour {
 	private bool canPoop(){
 		return poopCount > 0;
 	}
+
+	public void Scratch(){
+		gameController.score += 25;
+		scratchSound.Play ();
+		gameController.Alert ("Anything and everything is technically a scratching post");
+	}
+
+
 
 
 }
